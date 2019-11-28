@@ -1,10 +1,11 @@
-# Shot_Prediction
+## NBA Shot Analysis
 
-Tasks to do :
-Test the hypothesis of the clutch gene, is it true some players are significantly better than others at scoring, in terms of points and efficiency at the end of the game
-Test the hot hand hypothesis, does a player’s shooting percentage improve as they make more and more shots.
+**TO DO:**
+1. Test the hypothesis of the clutch gene, is it true some players are significantly better than others at scoring, in terms of points and efficiency in end of game situations
+2. Test the hot hand hypothesis, does a player’s shooting percentage improve as they make more and more shots.
 Recommend the best defender on any particular player. Choose a player, check stats of player against that defender and suggest best defenders based on position.
-Shot prediction task - Will the player make his shot based on some features
+3. Shot prediction task - Will the player make his shot based on some features (Deep learning model + Logistic Regression model)
+
 
 
 
