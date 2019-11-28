@@ -24,8 +24,8 @@ Shot_logs.csv - Main dataset that contains every shot attempted over the course 
 
 
 **USEFUL LINKS AND RESOURCES**
-https://www.kaggle.com/drgilermo/the-fear-factor
-https://www.kaggle.com/jasonatthinkful/analysis-of-the-hot-hand-phenomenon
+1. https://www.kaggle.com/drgilermo/the-fear-factor
+2. https://www.kaggle.com/jasonatthinkful/analysis-of-the-hot-hand-phenomenon
 
 **REPORT**
 1. Initial Hypotheses: Assumptions about the NBA regarding players that we plan to test 
