@@ -6,10 +6,11 @@
 3. Recommendation task - Who is the best defender against a certain player(Recommend the best defender on any particular player. Choose a player, check stats of player against that defender and suggest best defenders based on position.)
 
 **UNDER PROGRESS**
-1. Test the hypothesis of the clutch gene, is it true some players are significantly better than others at scoring, in terms of points and efficiency in end of game situations
+
 
 **COMPLETED**
 1. Test the hot hand hypothesis, does a player’s shooting percentage improve as they make more and more shots. Generated plots for the 17 players with the best hot hands.
+2. Test the hypothesis of the clutch gene, is it true some players are significantly better than others at scoring, in terms of points and efficiency in end of game situations
 
 **DATA**
 1. shot_logs_assignment.csv contains the latest dataset with data being used for all tasks
