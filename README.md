@@ -6,7 +6,8 @@
 3. Recommendation task - Who is the best defender against a certain player(Recommend the best defender on any particular player. Choose a player, check stats of player against that defender and suggest best defenders based on position.)
 
 **UNDER PROGRESS**
-
+1. Deep learning model testing with various features
+2. Standart dataset Visualisation 
 
 **COMPLETED**
 1. Test the hot hand hypothesis, does a player’s shooting percentage improve as they make more and more shots. Generated plots for the 17 players with the best hot hands.
