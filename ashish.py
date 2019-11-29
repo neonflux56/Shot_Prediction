@@ -3,16 +3,18 @@ from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.utils import to_categorical
+from sklearn.utils import shuffle
 import keras
 import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from keras import optimizers
 
 df = pd.read_csv("shot_logs_assignment.csv")
 
 df = pd.DataFrame(df)
-
+df = shuffle(df)
 #Convert to numeric
 
 df = df.assign(
@@ -97,27 +99,50 @@ test = test.join(pd.DataFrame(normalized_Defender_Weight),lsuffix='_left', rsuff
 
 
 #Split Response and feature
-X = test
-y = encoded_Shot_made.iloc[:,1]
-
+X = test[:100000]
+y = [int(i) for i in (encoded_Shot_made.iloc[:,1])][:100000]
+sum(y)
 
 #################################################
 
 # define the keras model
+from keras.regularizers import l2
 
 model = Sequential()
-model.add(Dense(80, input_dim=142, activation='relu'))
-model.add(Dense(16, activation='relu'))
-model.add(Dense(8, activation='relu'))
+model.add(Dense(16, input_dim=142, activation='relu',kernel_regularizer=l2(0.00001)))
+#model.add(Dense(8, activation='relu'))
+#model.add(Dense(50, activation='relu'))
+#model.add(Dense(16, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
 #Compile model
+#regulariser
+
+sgd = optimizers.SGD(lr=0.000001)
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 
 #Fit model
-model.fit(X, y, epochs=40, batch_size=50, validation_split=0.2)
+history = model.fit(X, y, epochs=1000, batch_size=400, validation_split=0.2,verbose=0)
+#Plot
+plt.plot(history.history['accuracy'], label='train')
+plt.plot(history.history['val_accuracy'], label='val')
+plt.legend()
+plt.show()
 
 #Print Accuracy
 _, accuracy = model.evaluate(X, y)
 print('Accuracy: %.2f' % (accuracy*100))
+
+pred = model.predict_classes(X)
+sum(pred)
+
+
+confusion_matrix(y,pred)
+sum(y)/len(df)
+
+
+#Accuracy: 90.79
+
+#array([[54749,     0],
+#       [ 9209, 36042]])
