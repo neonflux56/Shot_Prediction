@@ -118,7 +118,7 @@ model.add(Dense(1, activation='sigmoid'))
 #Compile model
 #regulariser
 
-sgd = optimizers.SGD(lr=0.000001)
+#sgd = optimizers.SGD(lr=0.000001)
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 
@@ -134,11 +134,13 @@ plt.show()
 _, accuracy = model.evaluate(X, y)
 print('Accuracy: %.2f' % (accuracy*100))
 
-pred = model.predict_classes(X)
-sum(pred)
+X1 = test[100000:]
+y1 = [int(i) for i in (encoded_Shot_made.iloc[:,1])][100000:]
+pred1 = model.predict_classes(X1)
+sum(pred1)
 
 
-confusion_matrix(y,pred)
+confusion_matrix(y1,pred1)
 sum(y)/len(df)
 
 
