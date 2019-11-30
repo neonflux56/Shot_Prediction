@@ -109,6 +109,8 @@ sum(y)
 from keras.regularizers import l2
 
 model = Sequential()
+
+#good 0.00001
 model.add(Dense(16, input_dim=142, activation='relu',kernel_regularizer=l2(0.00001)))
 #model.add(Dense(8, activation='relu'))
 #model.add(Dense(50, activation='relu'))
@@ -122,11 +124,11 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 
-#Fit model
+#Fit model #1000 epochs
 history = model.fit(X, y, epochs=1000, batch_size=400, validation_split=0.2,verbose=0)
 #Plot
-plt.plot(history.history['accuracy'], label='train')
-plt.plot(history.history['val_accuracy'], label='val')
+plt.plot(history.history['loss'], label='train')
+plt.plot(history.history['val_loss'], label='val')
 plt.legend()
 plt.show()
 
@@ -139,12 +141,33 @@ y1 = [int(i) for i in (encoded_Shot_made.iloc[:,1])][100000:]
 pred1 = model.predict_classes(X1)
 sum(pred1)
 
-
 confusion_matrix(y1,pred1)
+
+
+for i in X:
+    with open('Xtrain.csv', 'w') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerow(i)
+
+for i in X1:
+    with open('Xtest.csv', 'w') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerow(i)
+
+for i in y:
+    with open('Ytrain.csv', 'w') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerow(i)
+
+for i in y1:
+    with open('Ytest.csv', 'w') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerow(i)
+
+
+
 sum(y)/len(df)
 
 
 #Accuracy: 90.79
 
-#array([[54749,     0],
-#       [ 9209, 36042]])
