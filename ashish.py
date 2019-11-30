@@ -100,7 +100,7 @@ test = test.join(pd.DataFrame(normalized_Defender_Weight),lsuffix='_left', rsuff
 
 #Split Response and feature
 X = test[:100000]
-y = [int(i) for i in (encoded_Shot_made.iloc[:,1])][:100000]
+y = pd.DataFrame([int(i) for i in (encoded_Shot_made.iloc[:,1])][:100000])
 sum(y)
 
 #################################################
@@ -137,34 +137,16 @@ _, accuracy = model.evaluate(X, y)
 print('Accuracy: %.2f' % (accuracy*100))
 
 X1 = test[100000:]
-y1 = [int(i) for i in (encoded_Shot_made.iloc[:,1])][100000:]
+y1 = pd.DataFrame([int(i) for i in (encoded_Shot_made.iloc[:,1])][100000:])
 pred1 = model.predict_classes(X1)
 sum(pred1)
 
 confusion_matrix(y1,pred1)
 
-
-for i in X:
-    with open('Xtrain.csv', 'w') as csvFile:
-        writer = csv.writer(csvFile)
-        writer.writerow(i)
-
-for i in X1:
-    with open('Xtest.csv', 'w') as csvFile:
-        writer = csv.writer(csvFile)
-        writer.writerow(i)
-
-for i in y:
-    with open('Ytrain.csv', 'w') as csvFile:
-        writer = csv.writer(csvFile)
-        writer.writerow(i)
-
-for i in y1:
-    with open('Ytest.csv', 'w') as csvFile:
-        writer = csv.writer(csvFile)
-        writer.writerow(i)
-
-
+X.to_csv (r'Xtrain.csv', index = None, header=True)
+y.to_csv (r'Ytrain.csv', index = None, header=True)
+X1.to_csv (r'Xtest.csv', index = None, header=True)
+y1.to_csv (r'Ytest.csv', index = None, header=True)
 
 sum(y)/len(df)
 
