@@ -38,3 +38,17 @@ Plot2 <- test %>%
 Plot2 + theme(axis.text.x = element_text(face = "bold", color = "#993333", hjust = 1,
                                          size = 8, angle = 45))
 
+
+
+
+
+
+Attempts <- shotlogs %>%
+  group_by(player_id,player_name) %>%
+  summarise(Attempts = n())
+
+Plot <- Attempts %>% ggplot(aes(x=Attempts)) + geom_histogram(stat = "density", binwidth = 20, bins = 1000)+ labs(x = "Number of Attempts" , y = "Density", title = "Histogram of shot attempts per player")
+
+Plot + geom_line(aes(x = 500, y = 0),arrow = arrow(angle=90,length = unit(4,"inches")))
+
+
