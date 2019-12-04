@@ -1,4 +1,7 @@
 ## NBA Shot Analysis
+
+View report for detailed understaning of this project in file titled *cse258_report_final.pdf*
+
 **COMPLETED**
 1. Test the hot hand hypothesis, does a player’s shooting percentage improve as they make more and more shots. Generated plots for the 17 players with the best hot hands.
 2. Test the hypothesis of the clutch gene, is it true some players are significantly better than others at scoring, in terms of points and efficiency in end of game situations
